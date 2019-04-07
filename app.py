@@ -58,9 +58,13 @@ def recommend_cities():
     recomendacion['score'] = np.array(score.nlargest(20))
 
     recomendacion = recomendacion.merge(catalog, on='code')
-    recomendacion = recomendacion[['name','country','score']]
+    recomendacion = recomendacion[['name','country','continent','score']]
+    for i in range(0,len(recomendacion)):
+        recomendacion['country'][i] = recomendacion['country'][i]['name']
+        recomendacion['continent'][i] = recomendacion['continent'][i]['name']
 
     json_recomendacion = recomendacion.to_json(orient='records')
+
     resp = flask.Response(json_recomendacion, status=200, mimetype='application/json')
 
     return resp

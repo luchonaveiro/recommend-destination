@@ -68,7 +68,11 @@ def recommend_cities():
 if __name__ == '__main__':
     app.run(debug=True)
 
-# Ejemplos
+# Ejemplos local
 # Recomendacion: http://127.0.0.1:5000/recommend?city=Barcelona&city=Bangkok
 # Destinos: http://127.0.0.1:5000/destinations
+
+# Ejemplos produccion
+# Recomendacion: https://recommend-destination.herokuapp.com/recommend?city=Barcelona&city=Bangkok
+# Destinos: https://recommend-destination.herokuapp.com/destinations
 

@@ -2,7 +2,7 @@
 
 Este sistema de recomendacion se realizo usando 1.700.000 busquedas de un sitio de e-travel.
 Se utilizo el modelo de filtros colaborativos (item-item).
-El input del modelo es 1 o más ciudades del mundo, y el modelo devueve 10 otras recomendaciones de ciudades que usuarios parecidos buscaron.
+El input del modelo es 1 o más ciudades del mundo, y el modelo devuelve 10 otras recomendaciones de ciudades que usuarios parecidos buscaron.
 
 Se construyo una API al rededor del modelo, la cual se puede consultar en la siguiente URL:
 

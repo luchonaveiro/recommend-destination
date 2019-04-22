@@ -1,4 +1,4 @@
-<strong> Recommend Destination </strong>
+# Recommend Destination
 
 Este sistema de recomendacion se realizo usando 1.700.000 busquedas de un sitio de e-travel.
 Se utilizo el modelo de filtros colaborativos (item-item).

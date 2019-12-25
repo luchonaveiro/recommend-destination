@@ -4,9 +4,9 @@ import json
 import flask
 
 # Cargo modelo y catalogo de paises
-data_neighbours = pd.read_csv('data_neighbours.csv', index_col=0)
-data_matrix = pd.read_csv('data_matrix.csv', index_col=0)
-catalog = pd.read_json('catalog.json', encoding ='utf-8')
+data_neighbours = pd.read_csv('model/data_neighbours.csv', index_col=0)
+data_matrix = pd.read_csv('model/data_matrix.csv', index_col=0)
+catalog = pd.read_json('model/catalog.json', encoding ='utf-8')
 catalog['code'] = catalog['code'].astype(str)
 catalog['code'] = 't_' + catalog['code']
 
@@ -14,7 +14,6 @@ catalog['code'] = 't_' + catalog['code']
 app = flask.Flask(__name__)
 
 @app.route("/destinations")
-
 # Muestro destinos posibles en la recomendacion
 def show_destinations():
     destinations = catalog.to_json(orient='records')
@@ -22,11 +21,11 @@ def show_destinations():
     return resp
 
 # Recomiendo un destino, en base a los que ingresa el usuario
-@app.route("/recommend")
+@app.route("/recommend", methods=['POST'])
 def recommend_cities():
-    
     # Armo lista con las ciudades que busco el usuario, y las uso para recomendar
-    cities = flask.request.args.getlist('city')
+    cities = flask.request.get_json()['cities']
+    print(cities)
     code = catalog[catalog['name'].isin(cities)]['code'].tolist()
 
     # Recomiendo segun la ciudad que eligio
